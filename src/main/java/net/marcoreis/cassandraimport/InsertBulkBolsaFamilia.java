@@ -24,8 +24,8 @@ public class InsertBulkBolsaFamilia {
 
 	public static void main(String[] args) throws IOException {
 		if (args.length < 4) {
-			String msg =
-					"Attention: Input file, primary key, table name and keyspace are obligatory.";
+			String msg = "Attention: Input file, primary key, "
+					+ "table name and keyspace are obligatory.";
 			System.out.println(msg);
 			return;
 		}
