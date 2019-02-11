@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>net.marcoreis</groupId>
-	<artifactId>cassandra-bulk-import</artifactId>
+	<artifactId>big-data-bulk-import</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>cassandra-bulk-import</name>
+	<name>big-data-bulk-import</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -18,13 +19,12 @@
 
 	<dependencies>
 
-		<!-- https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core -->
 		<dependency>
 			<groupId>com.datastax.cassandra</groupId>
 			<artifactId>cassandra-driver-core</artifactId>
-			<version>3.1.0</version>
+			<version>3.6.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -34,7 +34,7 @@
 		<dependency>
 			<groupId>org.apache.cassandra</groupId>
 			<artifactId>cassandra-all</artifactId>
-			<version>3.7</version>
+			<version>3.11.3</version>
 		</dependency>
 
 		<dependency>
