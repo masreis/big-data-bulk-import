@@ -12,7 +12,7 @@ public class CassandraBulkImportTest {
 
     @Test
     public void testBulkImport() throws IOException {
-	String inputFile = "/home/marco/dados/nyc/fhv_tripdata_2018-01.csv";
+	String inputFile = "/home/marco/dados/nyc/fhv_tripdata_2018-06.csv";
 	String outputDir = System.getProperty("user.home") + "/temp/datalake/tb_fhv/";
 	File file = new File(outputDir);
 	FileUtils.deleteDirectory(file);

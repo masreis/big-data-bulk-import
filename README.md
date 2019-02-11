@@ -8,12 +8,18 @@ A comparison between Cassandra, HBase and MySQL
 ## 
 
 ```bash
-CASSANDRA_HOME=/home/marco/software/apache-cassandra-3.11.3
+CASSANDRA_HOME=/home/marco/software/cassandra
 PATH=$PATH:$CASSANDRA_HOME/bin
+<<<<<<< HEAD
 INPUT_DIR=/home/marco/temp/datalake/tb_fhv/
+=======
+INPUT_DIR=/home/marco/temp/datalake/tb_fhv
+
+# ARQUIVO_BF=$BF_DIR/201501_BolsaFamiliaFolhaPagamento.csv
+>>>>>>> 7af5b58edf36a43932abca5550fa43c0d88f5569
 ```
 
-```
+```sql
 CREATE KEYSPACE datalake
   WITH REPLICATION = { 
    'class' : 'SimpleStrategy', 
