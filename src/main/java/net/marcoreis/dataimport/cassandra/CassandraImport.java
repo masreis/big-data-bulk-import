@@ -21,12 +21,9 @@ public class CassandraImport {
     private int port = 9042;
 
     public static void main1(String[] args) {
-	String filename = "/home/marco/dados/bolsa-familia/entrada/201505_BolsaFamiliaFolhaPagamento.csv";
+	String filename = "";
 	new CassandraImport().inserir(filename);
     }
-    // UF; Código SIAFI Município; Nome Município; Código Função; Código
-    // Subfunção; Código Programa; Código Ação; NIS Favorecido; Nome Favorecido;
-    // Fonte-Finalidade; Valor Parcela e Mês Competência.
 
     public void inserir(String filename) {
 	logger.info("Vai começar");
@@ -38,7 +35,8 @@ public class CassandraImport {
 	try (BufferedReader reader = new BufferedReader(
 		new InputStreamReader(new FileInputStream(filename), Charset.forName("ISO-8859-1")))) {
 
-	    reader.readLine(); // IGNORA O HEADER
+	    // IGNORA O HEADER
+	    reader.readLine();
 	    String line;
 	    long ini = System.currentTimeMillis();
 	    PreparedStatement pstmt = session.prepare(String.format(cql, "scalability", "bfs"));

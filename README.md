@@ -1,23 +1,25 @@
 # A big data importing tool
 
-Bulk import for Cassandra and HBase
 
-A comparison between Cassandra, HBase and MySQL
+```bash
+time java -Xmx4g \
+    -cp target/big-data-bulk-import-jar-with-dependencies.jar \
+    net.marcoreis.dataimport.cassandra.CassandraBulkImport
+```
 
+## Scripts
 
-## 
+## Environment variables
 
 ```bash
 CASSANDRA_HOME=/home/marco/software/cassandra
 PATH=$PATH:$CASSANDRA_HOME/bin
-<<<<<<< HEAD
-INPUT_DIR=/home/marco/temp/datalake/tb_fhv/
-=======
-INPUT_DIR=/home/marco/temp/datalake/tb_fhv
-
+SSTABLELOADER_DIR=/home/marco/temp/datalake/tb_fhv
 # ARQUIVO_BF=$BF_DIR/201501_BolsaFamiliaFolhaPagamento.csv
->>>>>>> 7af5b58edf36a43932abca5550fa43c0d88f5569
 ```
+
+## Cassandra scripts for creating keyspace and table
+
 
 ```sql
 CREATE KEYSPACE datalake
@@ -27,6 +29,7 @@ CREATE KEYSPACE datalake
   };
 
 ```
+
 
 ```sql
 CREATE TABLE datalake.tb_fhv 
@@ -43,29 +46,25 @@ CREATE TABLE datalake.tb_fhv
 ```
 
 
-```bash
-sstableloader -v -d nome-marquina diretorio-da-tabela
-
-```
+## Command to start Cassandra
 
 ```bash
 cassandra -f
 ```
 
-```bash
-time sstableloader -v -d 127.0.0.1 $INPUT_DIR
-rm -rf $INPUT_DIR
-```
-
+## Command to import the data in the containing directory
 
 ```bash
-java \
-	-Djava.library.path="$CASSANDRA_HOME/lib/sigar-bin/" \
-	-Xmx4g \
-	-cp target/cassandra-bulk-import-jar-with-dependencies.jar \
-	net.marcoreis.cassandraimport.InsertBulkBolsaFamilia \
-	$ARQUIVO_BF \
-	nisfavorecido,id  \
-	pagamentonis \
-	bf
+time sstableloader -v -d 127.0.0.1 $SSTABLELOADER_DIR
 ```
+1m30s
+
+
+It takes about 4 minutes to complete in a notebook with 4 CPU i7 processor and 16 GB of RAM.
+
+
+select * from datalake.tb_fhv;
+
+# Reference
+https://www.datastax.com/dev/blog/using-the-cassandra-bulk-loader-updated
+https://docs.datastax.com/en/cassandra/3.0/cassandra/tools/toolsBulkloader.html
